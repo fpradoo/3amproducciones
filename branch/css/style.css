@@ -36,6 +36,9 @@ body{
 	margin:0 0; 
 	font-family: 'Roboto', sans-serif;
 }
+.negrita{
+	font-weight: bold;
+}
 
 .black {
 	color: black;
@@ -881,17 +884,25 @@ ul.callbacks_tabs.callbacks2_tabs {
 
 .social-icons i.icon1
 {
-	background:url("../images/img-sprite.png") no-repeat 0px 0px;
+	background:url("../images/img-sprite.png") no-repeat -17px -659px;
+	height:99px;
+	width:99px;
 }
 .social-icons i.icon1:hover {
-  background-position: 0px -64px;
+	background-position: -17px -14px;
+	height:99px;
+	width:99px;
 }
 .social-icons i.icon2
 {
-	background:url("../images/img-sprite.png") no-repeat -64px 0px;
+	background:url("../images/img-sprite.png") no-repeat -737px -659px;
+	height:99px;
+	width:99px;
 }
 .social-icons i.icon2:hover {
-  background-position: -64px -64px;
+  background-position: -737px -14px;
+  	height:99px;
+	width:99px;
 }
 .social-icons i.icon3
 {
