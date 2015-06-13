@@ -43,9 +43,6 @@ body{
 .black {
 	color: black;
 }
-.white{
-	color: #fff;
-}
 .header-top {
   padding: 1em 0;
   background: #FF6F6F;;
@@ -189,6 +186,8 @@ nav a:focus {
   line-height: 1.8em;
   padding: 0 4px;
 }
+
+
 a.button {
   border: 1px solid #000;
   font-size: 1.5em;
@@ -780,9 +779,8 @@ ul.callbacks_tabs.callbacks2_tabs {
 .contactdetails-grid h4 {
   font-size: 2em;
   text-transform: capitalize;
-   color: #000;
-  margin-bottom: 1em;
-    font-family: 'Exo', sans-serif;
+  color: #000;
+  font-family: 'Exo', sans-serif;
 }
 .contact-text p {
 	color: #515862;
@@ -813,6 +811,7 @@ ul.callbacks_tabs.callbacks2_tabs {
 	font-size: 15px;
 	outline: none;
 	border:1px solid #dcdee0;
+	color: black;
 }
 .contactdetails-grid input[type="text"]:hover{
 	border:1px solid #ffd2d2;
@@ -825,6 +824,7 @@ ul.callbacks_tabs.callbacks2_tabs {
 	resize: none;
 	outline: none;
 	border:1px solid #dcdee0;
+	color: black;
 }
 .contactdetails-grid textarea:hover{
 	border:1px solid #ffd2d2;
@@ -1081,6 +1081,8 @@ ul.callbacks_tabs.callbacks2_tabs {
 .comment-grid{
 	margin-bottom:2.5em;
 }
+
+
 	
 				/*-- responsive-mediaquries --*/
 @media(max-width:1280px){
@@ -1107,6 +1109,9 @@ ul.callbacks_tabs.callbacks2_tabs {
      .about-grid p {
 		font-size: 1.1em;
 		padding: 0 1px;
+	}
+	.white p {
+	color: #fff;
 	}
 	a.button {
   		font-size: 1.2em;

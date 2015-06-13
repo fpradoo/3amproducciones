@@ -7,15 +7,87 @@
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Luxury Resorts  Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Rochester' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Exo:100,200,300,400,500,600,700,800,900,100italic,200italic,300italic,400italic,500italic,600italic,700italic,800italic,900italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script>
+		function cargaSendMail(){
+			$("#c_enviar").attr("disabled", true);
+
+			$(".c_error").remove();
+
+			var filter=/^[A-Za-z][A-Za-z0-9_]*@[A-Za-z0-9_]+.[A-Za-z0-9_.]+[A-za-z]$/;
+			var s_email = $(‘#c_mail’).val();
+			var s_name = $(‘#c_name’).val();
+			var s_asunto = $(‘#c_asunto’).val(); 
+			var s_msg = $(‘#c_msg’).val();
+
+			if (filter.test(s_email)){
+				sendMail = "true";
+				}else{
+					$(‘#c_mail’).after("<span class=’c_error’ id=’c_error_mail’>Ingrese e-mail valido.</span>");
+					//aplicamos color de borde si el se encontro algun error en el envio
+					$(‘#contactform’).css("border-color","#e74c3c");
+					sendMail = "false";
+				}
+				
+			if (s_name.length == 0 ){
+				$(‘#c_name’).after( "<span class=’c_error’ id=’c_error_name’>Ingrese su nombre.</span>" );
+				var sendMail = "false";
+			}
+			
+			if (s_msg.length == 0 ){
+				$(‘#c_msg’).after( "<span class=’c_error’ id=’c_error_msg’>Ingrese mensaje.</span>" );
+				var sendMail = "false";
+			}
+			
+			if (s_asunto.length == 0 ){
+				$(‘#c_asunto‘).after( "<span class=’c_error’ id=’c_error_msg’>Ingrese asunto.</span>" );
+				var sendMail = "false";
+			}
+
+			if(sendMail == "true"){
+				var datos = {
+				"nombre" : $(‘#c_name’).val(),
+				"email" : $(‘#c_mail’).val(),
+				"asunto" : $(‘#c_asunto’).val(),
+				"mensaje" : $(‘#c_msg’).val()
+			};
+
+				$.ajax({
+					data: datos,
+					// hacemos referencia al archivo contacto.php
+					url: ‘..\contacto.php’,
+					type: ‘post’,
+						beforeSend: function () {
+						//aplicamos color de borde si el envio es exitoso
+						$(‘#contactform’).css("border-color","#25A25A");
+						$("#c_enviar").val("Enviando…");
+					},
+
+					success: function (response) {
+						$(‘form’)[0].reset();
+						$("#c_enviar").val("Enviar");
+						$("#c_information p").html(response);
+						$("#c_information").fadeIn(‘slow’);
+						$("#c_enviar").removeAttr("disabled");
+					}
+
+				});
+			} else{
+				$("#c_enviar").removeAttr("disabled");
+			}
+		}
+	
+	</script>
 	<script src="js/jquery-1.8.3.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style4.css" />
+	<link rel="stylesheet" type="text/css" href="css/default.css" />
+	<link rel="stylesheet" type="text/css" href="css/component.css" />
+	<script src="js/modernizr.custom.js"></script>
 	<script src="js/responsiveslides.min.js"></script>
 	<script>
 		$(function () {
@@ -28,7 +100,10 @@
 		  });
 		});
 	
-	</script
+	</script>
+	
+	
+	
 	<!---- start-smoth-scrolling---->
 	<script type="text/javascript" src="js/move-top.js"></script>
 	<script type="text/javascript" src="js/easing.js"></script>
@@ -146,20 +221,50 @@
 							<div class="col-md-3 about-grid">
 								<img src="images/page1_img2.jpg">
 								<h4>Gisele <span>Re</span></h4>
-								<p>3 A.m se forma en buenos aires, Argentina, uniendo a profesionales recibidas de la carrera de diseño de imagen, sonido y fotografia con una misma pasion: Comunicar sentimientos y emociones a traves de la fotografia y video.</p>
+								<p>- <span style="color:white">Diseñadora</span> de imagen y sonido</p>
+								<p>Recibida en <span style="negrita">FADU. </span></p>
+								<p>- <span style="color:white">Realización</span> cinematográfica</p>
+								<p>y de <span style="negrita">animaciones.</span></p>
+								<p>- <span style="color:white">Coordinadora</span> de equipos en grabaciones<span style="negrita"> cinematográficas</span>.</p>
 							</div>
 							<div class="col-md-3 about-grid">
 								<img src="images/page1_img3.jpg">
 								<h4>Melisa <span>Abril</span></h4>
-								<p>- Fotógrafa</p>
+								<p>- <span style="color:white">Fotógrafa</span></p>
 								<p>Recibida en <span style="negrita">CEIC. </span></p>
-								<p>- Productora Integral de Televisión</p>
+								<p>- <span style="color:white">Productora</span> Integral de Televisión.</p>
 								<p>Recibida en <span style="negrita">TEA Imagen.</span></p>
-								<p>- Ganadora del primer premio “<span style="negrita">Área Naturaleza</span>”.</p>
+								<p>- <span style="color:white">Ganadora</span> del primer premio “<span style="negrita">Área Naturaleza</span>”.</p>
 							</div>
 							<div class="clearfix"></div>
 						</div>
-						<a class="button hvr-shutter-in-vertical" href="#">Leer más</a>
+						<div class="md-modal md-effect-8" id="modal-8">
+							<div class="md-content">
+								<h3>Quienes somos</h3>
+								<div>
+									<ul>
+										<li>3 A.m se forma en buenos aires, Argentina, uniendo a profesionales recibidas de la carrera de diseño de imagen, sonido y fotografia con una misma pasion: Comunicar sentimientos y emociones a traves de la fotografia y video.</li>
+										<li>Los servicios que brindamos comprenden una amplia gama de productos audiovisuales, ya que tenemos el fin de satisfacer las necesidades dentro de la rama que el cliente requiera.</li>
+										<li>Nuestro equipo tambien esta constituido por servicios adicionales como maquilladores, diseñadores de arte y editores.</li>
+										<li>Utilizamos equipos de alta calidad, para poder capturar y procesar las imágenes y tener un producto final que deje conforme a nuestros clientes.</li>
+									</ul>
+									<button class="md-close" id="boton-modal">Volver a la pagina</button>
+								</div>
+							</div>
+						</div>
+						<a class="button hvr-shutter-in-vertical md-trigger" data-modal="modal-8" >Leer más</a>
+						<!-- classie.js by @desandro: https://github.com/desandro/classie -->
+						<script src="js/classie.js"></script>
+						<script src="js/modalEffects.js"></script>
+
+						<!-- for the blur effect -->
+						<!-- by @derSchepp https://github.com/Schepp/CSS-Filters-Polyfill -->
+						<script>
+							// this is important for IEs
+							var polyfilter_scriptpath = '/js/';
+						</script>
+						<script src="js/cssParser.js"></script>
+						<script src="js/css-filters-polyfill.js"></script>
 					</div>
 				</div>
 						<div class="services-section" id="services">
@@ -172,8 +277,7 @@
 													<h4>01</h4>
 												</div>
 												<div class="left-grid2">
-													<h4>Regal and Baquacil Chemicals </h4>
-													<p>How wonderful it is that nobody need wait a singlemoment before starting to improve the world.</p>
+													<h4>Cumpleaños de 15 </h4>
 												</div>
 												<div class="clearfix"></div>
 											</div>
@@ -182,8 +286,7 @@
 												<h4>02</h4>
 											</div>
 											<div class="left-grid2">
-												<h4>Repairs and Equipment Upgrades</h4>
-												<p>How wonderful it is that nobody need wait a singlemoment before starting to improve the world.</p>
+												<h4>Casamientos.</h4>
 											</div>
 											<div class="clearfix"></div>
 											</div>
@@ -192,45 +295,39 @@
 												<h4>03</h4>
 												</div>
 												<div class="left-grid2">
-													<h4>Complete Service & Parts Department </h4>
-													<p>How wonderful it is that nobody need wait a singlemoment before starting to improve the world.</p>
+													<h4>Bautismos/Comuniones.</h4>
 												</div>
 												<div class="clearfix"></div>
 											</div>
 										</div>
-										<div class="col-md-6 service-rightgrid">
-											<div class="service1">
-												<div class="left-grid1">
-													<h4>04</h4>
-												</div>
-												<div class="left-grid2">
-													<h4>Decking - concrete & Kool Deck </h4>
-													<p>How wonderful it is that nobody need wait a singlemoment before starting to improve the world.</p>
-												</div>
-												<div class="clearfix"></div>
+									<div class="col-md-6 service-rightgrid">
+										<div class="service1">
+											<div class="left-grid1">
+												<h4>04</h4>
 											</div>
-											<div class="service2">
-												<div class="left-grid1">
-												<h4>05</h4>
-												</div>
 											<div class="left-grid2">
-												<h4>Professional pool cleaning service </h4>
-												<p>How wonderful it is that nobody need wait a singlemoment before starting to improve the world.</p>
+												<h4>Eventos empresariales.</h4>
 											</div>
 											<div class="clearfix"></div>
-											</div>
-											<div class="service1">
-												<div class="left-grid1">
-												<h4>06</h4>
-												</div>
-											<div class="left-grid2">
-												<h4>LOREM IPSUM DOLOR SIT AMET </h4>
-												<p>How wonderful it is that nobody need wait a singlemoment before starting to improve the world.</p>
-											</div>
-											<div class="clearfix"> </div>
-											</div>
 										</div>
-										<div class="clearfix"> </div>
+										<div class="service2">
+										<div class="left-grid1">
+											<h4>05</h4>
+										</div>
+										<div class="left-grid2">
+											<h4>Book de fotos.</h4>
+										</div>
+										<div class="clearfix"></div>
+										</div>
+										<div class="service1">
+											<div class="left-grid1">
+											<h4>06</h4>
+											</div>
+											<div class="left-grid2">
+												<h4>Backstage/Videos con ideas propias del cliente.</h4>
+											</div>
+											<div class="clearfix"></div>
+										</div>
 									</div>
 							</div>
 						</div>
@@ -289,15 +386,16 @@
 						<div class="contact-grid">
 						<div class="col-md-6 contactdetails-grid">
 				<h4>Formulario</h4>
+				<h5>Los campos con <span>*</span> son obligatorios<h5>
 					<h5>Nombre <span>*</span></h5>
-						<input type="text">
-							<h5>Email <span>*</span></h5>
-								<input type="text">
-									<h5>Asunto <span>*</span></h5>
-										<input type="text">
-											<h5>Mensaje <span>*</span></h5>
-												<textarea> </textarea>
-													<input type="button" value="Enviar">
+						<input name="nombre" id="c_name" type="text">
+					<h5>Email <span>*</span></h5>
+						<input name="email" id="c_mail" type="text">
+					<h5>Asunto <span>*</span></h5>
+						<input name="asunto" id="c_asunto" type="text">
+					<h5>Mensaje <span>*</span></h5>
+						<textarea name="mensaje" id="c_msg"> </textarea>
+					<input name="send" onclick="cargaSendMail()" id="c_enviar" type="button" value="Enviar">
 					</div>
 				<div class="col-md-6 contactdetails-grid1">
 					<div class="address">
@@ -338,5 +436,6 @@
 				<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 				</div>
 			</div>
+			
 	</body>
 </html>
