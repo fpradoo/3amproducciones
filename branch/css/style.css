@@ -247,7 +247,6 @@ a.button {
   transform: scaleY(0);
 }
 .services-section{
-	padding: 4em 0;
 }
 .services-section h3 {
   font-size: 3em;
@@ -274,7 +273,7 @@ a.button {
   text-align: center;
   border: 1px solid;
   border-radius: 10px;
-  padding: 25px 14px;
+  padding: 12px 14px;
   background: #FF6F6F;
   color: #fff;
   border:none;

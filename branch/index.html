@@ -13,76 +13,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Exo:100,200,300,400,500,600,700,800,900,100italic,200italic,300italic,400italic,500italic,600italic,700italic,800italic,900italic' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-	<script>
-		function cargaSendMail(){
-			$("#c_enviar").attr("disabled", true);
-
-			$(".c_error").remove();
-
-			var filter=/^[A-Za-z][A-Za-z0-9_]*@[A-Za-z0-9_]+.[A-Za-z0-9_.]+[A-za-z]$/;
-			var s_email = $(‘#c_mail’).val();
-			var s_name = $(‘#c_name’).val();
-			var s_asunto = $(‘#c_asunto’).val(); 
-			var s_msg = $(‘#c_msg’).val();
-
-			if (filter.test(s_email)){
-				sendMail = "true";
-				}else{
-					$(‘#c_mail’).after("<span class=’c_error’ id=’c_error_mail’>Ingrese e-mail valido.</span>");
-					//aplicamos color de borde si el se encontro algun error en el envio
-					$(‘#contactform’).css("border-color","#e74c3c");
-					sendMail = "false";
-				}
-				
-			if (s_name.length == 0 ){
-				$(‘#c_name’).after( "<span class=’c_error’ id=’c_error_name’>Ingrese su nombre.</span>" );
-				var sendMail = "false";
-			}
-			
-			if (s_msg.length == 0 ){
-				$(‘#c_msg’).after( "<span class=’c_error’ id=’c_error_msg’>Ingrese mensaje.</span>" );
-				var sendMail = "false";
-			}
-			
-			if (s_asunto.length == 0 ){
-				$(‘#c_asunto‘).after( "<span class=’c_error’ id=’c_error_msg’>Ingrese asunto.</span>" );
-				var sendMail = "false";
-			}
-
-			if(sendMail == "true"){
-				var datos = {
-				"nombre" : $(‘#c_name’).val(),
-				"email" : $(‘#c_mail’).val(),
-				"asunto" : $(‘#c_asunto’).val(),
-				"mensaje" : $(‘#c_msg’).val()
-			};
-
-				$.ajax({
-					data: datos,
-					// hacemos referencia al archivo contacto.php
-					url: ‘..\contacto.php’,
-					type: ‘post’,
-						beforeSend: function () {
-						//aplicamos color de borde si el envio es exitoso
-						$(‘#contactform’).css("border-color","#25A25A");
-						$("#c_enviar").val("Enviando…");
-					},
-
-					success: function (response) {
-						$(‘form’)[0].reset();
-						$("#c_enviar").val("Enviar");
-						$("#c_information p").html(response);
-						$("#c_information").fadeIn(‘slow’);
-						$("#c_enviar").removeAttr("disabled");
-					}
-
-				});
-			} else{
-				$("#c_enviar").removeAttr("disabled");
-			}
-		}
-	
-	</script>
+	<script src="js/formulario.js"></script>
 	<script src="js/jquery-1.8.3.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style4.css" />
 	<link rel="stylesheet" type="text/css" href="css/default.css" />
@@ -142,7 +73,7 @@
 					<ul>
 						<nav class="cl-effect-3">
 						 	<li><a href="#services" class="scroll black">Servicios</a></li>
-							<li><a href="#gallery" class="scroll">Geleria</a></li>
+							<li><a href="#gallery" class="scroll">Galeria</a></li>
 							<li><a href="#aboutus" class="scroll black">¿Quienes somos?</a></li>
 							<li><a href="#contact" class="scroll">Contactanos</a></li>
 						</nav>
@@ -212,8 +143,127 @@
 		</script>
 	</div>
 			<div class="content">
+				<div class="gallery-section" id="gallery">
+					<div class="clearfix"> </div>
+					<h3>Gal<span>eria</span></h3>
+					<div class="gallery-grids">
+						<div class="col-md-2 gallery-grid">
+							<div class="gallery-grid1">
+								<a href="images/img1.jpg" class="swipebox"><img src="images/img1.jpg"/></a>
+						</div>
+						<div class="gallery-grid1">
+								<a href="images/img2.jpg" class="swipebox"><img src="images/img2.jpg"/></a>
+						</div>
+						<div class="gallery-grid1">
+								<a href="images/img3.jpg" class="swipebox"><img src="images/img3.jpg"/></a>
+						</div>
+						</div>
+						<div class="col-md-5 gallery-grid10">
+						<div class="gallery-grid01">
+								<a href="images/img5.jpg"class="swipebox"><img src="images/img5.jpg"/></a>
+						</div>
+						<div class="gallery1-grid">
+						<div class="gallery-grid02 ">
+								<a href="images/img4.jpg" class="swipebox"><img src="images/img4.jpg"/></a>
+						</div>
+						<div class="gallery-grid03">
+								<a href="images/img7.jpg" class="swipebox"><img src="images/img7.jpg"/></a>
+						</div>
+						<div class="clearfix"> </div>
+						</div>
+						</div>
+						<div class="col-md-5 gallery-grid11">
+						<div class="gallery2-grid">
+						<div class="gallery-grid02">
+								<a href="images/img8.jpg"class="swipebox"><img src="images/img8.jpg"/></a>
+						</div>
+						<div class="gallery-grid03">
+								<a href="images/img9.jpg" class="swipebox"><img src="images/img9.jpg"/></a>
+						</div>
+						<div class="clearfix"> </div>
+						</div>
+						<div class="gallery-grid01">
+						<a href="images/img6.jpg"class="swipebox"><img src="images/img6.jpg"/></a>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="services-section" id="services">
+					<div class="container">
+						<div class="clearfix"> </div>
+						<br />
+						<h3>Nuestros <span>servicios</span></h3>
+							<div class="services-grids">
+								<div class="col-md-6 service-leftgrid">
+									<div class="service1">
+										<div class="left-grid1">
+											<h4>01</h4>
+										</div>
+										<div class="left-grid2">
+											<h4>Cumpleaños de 15.</h4>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+									<div class="service2">
+										<div class="left-grid1">
+											<h4>02</h4>
+										</div>
+										<div class="left-grid2">
+											<h4>Casamientos.</h4>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+									<div class="service1">
+										<div class="left-grid1">
+											<h4>03</h4>
+										</div>
+										<div class="left-grid2">
+											<h4>Bautismos/Comuniones.</h4>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+								<div class="col-md-6 service-rightgrid">
+									<div class="service1">
+										<div class="left-grid1">
+											<h4>04</h4>
+										</div>
+										<div class="left-grid2">
+											<h4>Eventos empresariales.</h4>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+									<div class="service2">
+									<div class="left-grid1">
+										<h4>05</h4>
+									</div>
+									<div class="left-grid2">
+										<h4>Book de fotos.</h4>
+									</div>
+									<div class="clearfix"></div>
+									</div>
+									<div class="service1">
+										<div class="left-grid1">
+											<h4>06</h4>
+										</div>
+										<div class="left-grid2">
+											<h4>Backstage/Videos con ideas propias del cliente.</h4>
+										</div>
+										<div class="clearfix"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<br />
+						<br />
+					</div>
+			
+			
+			
 				<div class="about-section" id="aboutus"> 
 					<div class="container">
+					<div class="clearfix"> </div>
 						<h3>Sobre <span>nosotros<span></h3>
 						<div class="about-grids">
 							<div class="col-md-3 about-grid">
@@ -267,156 +317,44 @@
 						<script src="js/css-filters-polyfill.js"></script>
 					</div>
 				</div>
-						<div class="services-section" id="services">
-							<div class="container">
-								<h3>Nuestos <span>servicios</span></h3>
-									<div class="services-grids">
-										<div class="col-md-6 service-leftgrid">
-											<div class="service1">
-												<div class="left-grid1">
-													<h4>01</h4>
-												</div>
-												<div class="left-grid2">
-													<h4>Cumpleaños de 15 </h4>
-												</div>
-												<div class="clearfix"></div>
-											</div>
-											<div class="service2">
-											<div class="left-grid1">
-												<h4>02</h4>
-											</div>
-											<div class="left-grid2">
-												<h4>Casamientos.</h4>
-											</div>
-											<div class="clearfix"></div>
-											</div>
-											<div class="service1">
-												<div class="left-grid1">
-												<h4>03</h4>
-												</div>
-												<div class="left-grid2">
-													<h4>Bautismos/Comuniones.</h4>
-												</div>
-												<div class="clearfix"></div>
-											</div>
-										</div>
-									<div class="col-md-6 service-rightgrid">
-										<div class="service1">
-											<div class="left-grid1">
-												<h4>04</h4>
-											</div>
-											<div class="left-grid2">
-												<h4>Eventos empresariales.</h4>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-										<div class="service2">
-										<div class="left-grid1">
-											<h4>05</h4>
-										</div>
-										<div class="left-grid2">
-											<h4>Book de fotos.</h4>
-										</div>
-										<div class="clearfix"></div>
-										</div>
-										<div class="service1">
-											<div class="left-grid1">
-											<h4>06</h4>
-											</div>
-											<div class="left-grid2">
-												<h4>Backstage/Videos con ideas propias del cliente.</h4>
-											</div>
-											<div class="clearfix"></div>
-										</div>
-									</div>
-							</div>
-						</div>
-						<div class="gallery-section" id="gallery">
-								<h3>Gall<span>eria</span></h3>
-								<div class="gallery-grids">
-							<div class="col-md-2 gallery-grid">
-								<div class="gallery-grid1">
-									<a href="images/img1.jpg" class="swipebox"><img src="images/img1.jpg"/></a>
-							</div>
-							<div class="gallery-grid1">
-									<a href="images/img2.jpg" class="swipebox"><img src="images/img2.jpg"/></a>
-							</div>
-							<div class="gallery-grid1">
-									<a href="images/img3.jpg" class="swipebox"><img src="images/img3.jpg"/></a>
-							</div>
-						</div>
-						<div class="col-md-5 gallery-grid10">
-							<div class="gallery-grid01">
-									<a href="images/img5.jpg"class="swipebox"><img src="images/img5.jpg"/></a>
-							</div>
-							<div class="gallery1-grid">
-							<div class="gallery-grid02 ">
-									<a href="images/img4.jpg" class="swipebox"><img src="images/img4.jpg"/></a>
-							</div>
-							<div class="gallery-grid03">
-									<a href="images/img7.jpg" class="swipebox"><img src="images/img7.jpg"/></a>
-							</div>
-							<div class="clearfix"> </div>
-							</div>
-							</div>
-							<div class="col-md-5 gallery-grid11">
-							<div class="gallery2-grid">
-							<div class="gallery-grid02">
-									<a href="images/img8.jpg"class="swipebox"><img src="images/img8.jpg"/></a>
-							</div>
-							<div class="gallery-grid03">
-									<a href="images/img9.jpg" class="swipebox"><img src="images/img9.jpg"/></a>
-							</div>
-							<div class="clearfix"> </div>
-							</div>
-							<div class="gallery-grid01">
-							<a href="images/img6.jpg"class="swipebox"><img src="images/img6.jpg"/></a>
-								</div>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						</div>
-						<div class="price-section" id="pricing">
-
-	
-	</div>
-				<div class="contact-section" id="contact">
-					<div class="container">
-						<h3>Contac<span>tanos</span></h3>
-						<div class="contact-grid">
+				<div class="services-section" id="services">
+					<div class="contact-section" id="contact">
+						<div class="container">
+							<h3>Contac<span>tanos</span></h3>
+							<div class="contact-grid">
+							<!--<div class="col-md-6 contactdetails-grid">
+					<h4>Formulario</h4>
+					<h5>Los campos con <span>*</span> son obligatorios<h5>
+						<h5>Nombre <span>*</span></h5>
+							<input name="nombre" id="c_name" type="text">
+						<h5>Email <span>*</span></h5>
+							<input name="email" id="c_mail" type="text">
+						<h5>Asunto <span>*</span></h5>
+							<input name="asunto" id="c_asunto" type="text">
+						<h5>Mensaje <span>*</span></h5>
+							<textarea name="mensaje" id="c_msg"> </textarea>
+						<input name="send" onclick="cargaSendMail()" id="c_enviar" type="button" value="Enviar">
+						</div>-->
 						<div class="col-md-6 contactdetails-grid">
-				<h4>Formulario</h4>
-				<h5>Los campos con <span>*</span> son obligatorios<h5>
-					<h5>Nombre <span>*</span></h5>
-						<input name="nombre" id="c_name" type="text">
-					<h5>Email <span>*</span></h5>
-						<input name="email" id="c_mail" type="text">
-					<h5>Asunto <span>*</span></h5>
-						<input name="asunto" id="c_asunto" type="text">
-					<h5>Mensaje <span>*</span></h5>
-						<textarea name="mensaje" id="c_msg"> </textarea>
-					<input name="send" onclick="cargaSendMail()" id="c_enviar" type="button" value="Enviar">
+							<div class="google-map">
+								<iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD6-Ikc1wRN6y3aj2y606G7hYRK8eUEess&q=Cerviño+4253,+San+Justo,+Buenos+Aires"></iframe>
+							</div>
+						</div>
+					<div class="col-md-6 contactdetails-grid1">
+						<div class="address">
+						<br /><br /><br /><br />
+						<h4>Dirección</h4>
+							<p>Cerviño 4253, San Justo, Zona Oeste, Buenos Aires.</p>
+							<p>Telefono:(011) 15 5488 4827 // (011) 15 3398 1655</p>
+							<p>Email: <a href="mailto:3amfotografiayvideo@gmail.com">3amfotografiayvideo@gmail.com</a></p>
+							<p>Seguinos en: <a href="https://www.facebook.com/3amproducciones?fref=ts">Facebook</a>, <a href="https://instagram.com/3amproducciones">Instagram</a>.</p>
+						</div>					
 					</div>
-				<div class="col-md-6 contactdetails-grid1">
-					<div class="address">
-					<h4>Dirección</h4>
-				<p>Cerviño 4253,</p>
-					<p>San Justo, Zona Oeste,</p>
-						<p>Buenos Aires</p>
-							<p>Telefono:(011) 15 5488 4827</p>
-								
-									<p>Email: <a href="mailto:3amfotografiayvideo@gmail.com">3amfotografiayvideo@gmail.com</a></p>
-										<p>Follow on: <a href="https://www.facebook.com/3amproducciones?fref=ts">Facebook</a></p>
-									</div>
-									<div class="google-map">
-					<iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD6-Ikc1wRN6y3aj2y606G7hYRK8eUEess&q=Cerviño+4253,+San+Justo,+Buenos+Aires"></iframe>
+					<div class="clearfix"> </div>
+							</div>
+							</div>
+						</div>
 				</div>
-								</div>
-								<div class="clearfix"> </div>
-						</div>
-						</div>
-					</div>
-			</div>
 			<div class="footer-section">
 				<div class="container">
 					<div class="footer-top">
@@ -426,13 +364,13 @@
 						</div>
 					</div>
 					<div class="footer-bottom">
-						<p> Copyright &copy;2015  All rights  Reserved | Design by Alconan WebDev</a></p>
+						<p> Copyright &copy;2015  All rights  Reserved | Desarrollado por Alconan WebDev</a></p>
 					</div>
 			<script type="text/javascript">
 				$(document).ready(function() {
 					$().UItoTop({ easingType: 'easeOutQuart' });	
 				});
-			</script>
+			</script>			
 				<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 				</div>
 			</div>
